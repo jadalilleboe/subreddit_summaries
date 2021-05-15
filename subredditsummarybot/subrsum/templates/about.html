@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block main %}
+
+<h1 class="display-5 text-center mb-4">About</h1>
+<style>
+    @media (min-width: 800px) {
+    .paragraph-text {
+        width: 900px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    }
+    .button-center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+<div class="text-left paragraph-text container mb-4">
+    <p>The purpose of this website is to allow users to signup for a weekly summary of any subreddit within <a href="https://reddit.com">reddit.com</a>. This weekly summary will be sent to the user's e-mail inbox and can be customizable with keywords. Users can sign up for multiple subreddit summaries.</p>
+    <p>Users can also obtain an API of the summaries they've signed up for, written in JSON. This can be done by clicking the 'API' button above.
+    </p>
+    <p>The Subreddit Summary Email Signup website was created by Jada Lilleboe, a computer science student at the University of Minnesota-Twin Cities. Check out the <a href="https://github.com/jadalilleboe/subreddit_summaries" target="_blank">github repository</a> for this project.</p>
+    <div class="button-center">
+        <a class="btn btn-outline-dark btn-lg text-decoration-none btn-block mr-5 mt-3" href="{{ url_for('subrsum.home') }}">Sign up for a subreddit summary here</a>
+    </div>
+</div>
+{% endblock %}

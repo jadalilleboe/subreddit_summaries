@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmation{% endblock %}
+
+{% block main %}
+
+<h1 class="display-5 text-center">You have succesfully signed up for a weekly summary of the "{{ subreddit }}" subreddit!</h1>
+<p class="text-center my-4">{{ request.form['user_email'] }} will now receive weekly summaries of r/{{ subreddit }}.</p>
+<div class="text-center">
+    <a href="{{ url_for('subrsum.home') }}" class="btn btn-outline-dark btn-block">Get e-mail summaries for another subreddit</a>
+</div>
+{% endblock %}

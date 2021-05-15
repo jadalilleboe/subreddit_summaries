@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block main %}
+
+<h1 class="text-center">We couldn't find what you were looking for.</h1>
+<p class="text-center">Please visit our <a href="{{ url_for('subrsum.home') }}" class="text-decoration-none">homepage!</a></p>
+
+{% endblock %}
