@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Subreddit Summary{% endblock %}
+
+{% block main %}
+
+<div class="container">
+<p class="lead text-center">Welcome to the subreddit summary signup site! Enter a subreddit (and a list of keywords within that subreddit, if you'd like) and you will receive a summary of its top posts in your e-mail inbox.</p>
+
+
+    <form class="text-left" action="confirmation-page" method="post">
+        <style>
+            .fields {
+                margin: 0 auto;
+            }
+        </style>
+        <div class="container-sm fields">
+            <fieldset>
+                <div class="form-group m-3">
+                    <label for="subreddit">Subreddit Name (without /r/)</label>
+                    <input type="text" name="subreddit" id="subreddit" value="" class="form-control" placeholder="i.e. askreddit, mildlyinteresting, learnpython" required>
+                </div>
+                
+                <div class="form-group m-3">
+                    <label for="keywords">Enter a list of keywords separated by commas.</label>
+                    <input type="text" name="keywords" id="keywords" value="" class="form-control" placeholder="dogs, programming, cool stuff">
+                </div>
+
+                <div class="form-group m-3">
+                    <label for="user_email">E-mail Address</label>
+                    <input type="email" name="user_email" id="user_email" value="" class="form-control" required>
+                </div>
+                
+                <div class="form-group m-3">
+                    <label for="timeframe">How often would you like to receive this subreddit summary?</label>
+                    <select name="timeframe" id="timeframe" class="form-control" required>
+                        <option value="day">Daily</option>
+                        <option value="week">Weekly</option>
+                        <option value="month">Monthly</option>
+                    </select>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="text-center mb-3">
+            <button class="btn btn-outline-dark btn-block" type="submit">Submit</button>
+        </div>
+    </form>
+
+    {% if summaries %}
+    <style>
+        .list {
+            margin: 0 auto;
+        }
+        .width {
+            width: 400px;
+        }
+        ul {
+            vertical-align: middle;
+            line-height: 50px;
+        }
+    </style>
+    <div class="list text-left container">   
+    <h2 class="mt-4 text-center">Subreddit summaries you've signed up for: </h2>
+        <div class= "list width">
+            <ul class="mt-3 text-left">
+            {% for k,v in summaries %}
+                {% if v[0] == '' %}
+                <li>{{ k }}</li>
+                {% else %}
+                <li>{{ k }} with keywords {{ v[0] }}</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
